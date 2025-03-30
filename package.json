@@ -1,7 +1,7 @@
 {
   "name": "mig-ste",
   "version": "1.0.0",
-  "description": "",
+  "description": "A react component rich text editor",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -11,9 +11,18 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "test": "vite test"
+    "test": "vite test",
+    "dev": "vite"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "react-component",
+    "rich",
+    "text",
+    "rich-text",
+    "textarea",
+    "editor"
+  ],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.6.4",

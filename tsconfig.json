@@ -19,10 +19,10 @@
     "declarationMap": true,
     "baseUrl": ".",
     "paths": {
-      "react-vite-library": ["src/index.ts"]
+      "react-vite-library": ["lib/index.ts"]
     },
-    "typeRoots": ["node_modules/@types", "src/index.d.ts"]
+    "typeRoots": ["node_modules/@types", "lib/index.d.ts"]
   },
-  "include": ["src"],
+  "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

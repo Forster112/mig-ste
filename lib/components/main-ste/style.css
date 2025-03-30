@@ -1,0 +1,33 @@
+.editor{
+  border: 1px solid #BFBFBF;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 100px;
+  outline: #028ECA;
+}
+
+.buttonsWrap{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid #BFBFBF;
+  width: fit-content;
+  padding: 2px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 99999;
+  background-color: black;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: none;
+  outline: none;
+  width: 30px;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+}
