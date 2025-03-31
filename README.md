@@ -1,4 +1,4 @@
-# MigSTE
+# MigSTE  [![npm downloads](https://img.shields.io/npm/d18m/mig-ste.svg?maxAge=2592000)](http://www.npmtrends.com/mig-ste) [![npm](https://img.shields.io/npm/v/mig-ste.svg)](https://www.npmjs.com/package/mig-ste)
 
 A Rich Text Editor Component for React
 
@@ -94,7 +94,7 @@ A string class to be applied to the style buttons
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated be it issues, upgrades, or updates.
 1. Fork the project
 2. Clone repository
 3. Create your Feature Branch
