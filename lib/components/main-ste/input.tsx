@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 interface TextEditorProps {
   handleContentChange: (content: string) => void;
+  id?: string;
   ref?: React.RefObject<HTMLDivElement>;
   placeholder?: string;
   editorClass?: string;
@@ -11,7 +12,8 @@ interface TextEditorProps {
 }
 
 export const Input: React.FC<TextEditorProps> = ({
-  handleContentChange = () => {},
+  handleContentChange = () => { },
+  id,
   ref,
   placeholder,
   editorClass,
@@ -66,6 +68,11 @@ export const Input: React.FC<TextEditorProps> = ({
       setActiveStyles(
         activeStyles.filter((style) => style !== tag)
       );
+      return;
+    }
+
+    if (tag === 'a') {
+      addLink();
       return;
     }
 
@@ -204,7 +211,7 @@ export const Input: React.FC<TextEditorProps> = ({
             <i>I</i>
           </button>
           <button
-            onClick={addLink}
+            onClick={() => toggleStyle('a')}
             className={`${buttonsClass || ''} buttons`}
             style={{
               backgroundColor: activeStyles.includes('a')
@@ -217,6 +224,7 @@ export const Input: React.FC<TextEditorProps> = ({
         </div>
       )}
       <div
+        id={id}
         ref={ref}
         contentEditable={true}
         suppressContentEditableWarning
