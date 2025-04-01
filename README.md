@@ -76,6 +76,9 @@ function MyComponent() {
   );
 }
 ```
+### id
+id of the editor
+
 ### placeholder
 A string of text to be used as placeholder
 
