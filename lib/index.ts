@@ -1,1 +1,1 @@
-export * from './components/main-ste';
+export * from './main-ste';
