@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-interface TextEditorProps {
-  handleContentChange: (content: string) => void;
+export interface TextEditorProps {
+  handleContentChange?: (content: string) => void;
   id?: string;
   ref?: React.RefObject<HTMLDivElement>;
   placeholder?: string;
@@ -9,17 +9,41 @@ interface TextEditorProps {
   activeColor?: string;
   buttonWrapClass?: string;
   buttonsClass?: string;
+  formats?: string[];
 }
 
+const styles = [
+  { tag: 'b', label: 'bold', icon: <b>B</b> },
+  { tag: 'i', label: 'italic', icon: <i>I</i> },
+  { tag: 's', label: 'strikethrough', icon: <s>S</s> },
+  { tag: 'u', label: 'underline', icon: <u>U</u> },
+  { tag: 'a', label: 'link', icon: <span>🔗</span> },
+  {
+    tag: 'code',
+    label: 'code',
+    icon: <span>{'</>'}</span>,
+  },
+  {
+    tag: 'li',
+    label: 'list',
+    icon: (
+      <span className="list">
+        •− <br /> •−{' '}
+      </span>
+    ),
+  },
+];
+
 export const Input: React.FC<TextEditorProps> = ({
-  handleContentChange = () => { },
+  handleContentChange = () => {},
   id,
   ref,
   placeholder,
   editorClass,
   activeColor,
   buttonWrapClass,
-  buttonsClass
+  buttonsClass,
+  formats,
 }) => {
   const [showStylesContainer, setShowStylesContainer] =
     useState<boolean>(false);
@@ -30,6 +54,10 @@ export const Input: React.FC<TextEditorProps> = ({
     top: number;
     left: number;
   }>({ top: 0, left: 0 });
+
+  const chosenFormats = styles.filter((style) => {
+    return formats?.includes(style.label);
+  })
 
   // Function that toggles the style of the selected text
   const toggleStyle = (
@@ -71,7 +99,13 @@ export const Input: React.FC<TextEditorProps> = ({
       return;
     }
 
-    if (tag === 'a') {
+    if (
+      tag === 'a' &&
+      parentElement?.tagName !== 'A' &&
+      !attribute &&
+      !value
+    ) {
+      console.log(parentElement?.tagName !== 'A');
       addLink();
       return;
     }
@@ -134,7 +168,11 @@ export const Input: React.FC<TextEditorProps> = ({
       ) {
         const tagName =
           currentElement.tagName.toLowerCase();
-        if (['b', 'i', 'a'].includes(tagName)) {
+        
+        const tags = chosenFormats.map(
+          (style) => style.tag
+        );
+        if (tags.includes(tagName)) {
           activeTags.push(tagName);
         }
         currentElement = currentElement.parentElement;
@@ -165,6 +203,7 @@ export const Input: React.FC<TextEditorProps> = ({
       target.textContent === placeholder
     ) {
       target.textContent = '';
+      target.classList.remove('placeholderClass');
     }
   };
 
@@ -175,6 +214,7 @@ export const Input: React.FC<TextEditorProps> = ({
     if (!target.textContent) {
       target.textContent =
         placeholder || 'Start typing here...';
+      target.classList.add('placeholderClass');
     }
   };
 
@@ -188,39 +228,22 @@ export const Input: React.FC<TextEditorProps> = ({
             left: position.left,
           }}
         >
-          <button
-            onClick={() => toggleStyle('b')}
-            className={`${buttonsClass || ''} buttons`}
-            style={{
-              backgroundColor: activeStyles.includes('b')
-                ? activeColor || '#606263'
-                : 'transparent',
-            }}
-          >
-            <b>B</b>
-          </button>
-          <button
-            onClick={() => toggleStyle('i')}
-            className={`${buttonsClass || ''} buttons`}
-            style={{
-              backgroundColor: activeStyles.includes('i')
-                ? activeColor || '#606263'
-                : 'transparent',
-            }}
-          >
-            <i>I</i>
-          </button>
-          <button
-            onClick={() => toggleStyle('a')}
-            className={`${buttonsClass || ''} buttons`}
-            style={{
-              backgroundColor: activeStyles.includes('a')
-                ? activeColor || '#606263'
-                : 'transparent',
-            }}
-          >
-            🔗
-          </button>
+          {chosenFormats.map((style) => (
+            <button
+              key={style.tag}
+              onClick={() => toggleStyle(style.tag)}
+              className={`${buttonsClass || ''} buttons`}
+              style={{
+                backgroundColor: activeStyles.includes(
+                  style.tag
+                )
+                  ? activeColor || '#606263'
+                  : 'transparent',
+              }}
+            >
+              {style.icon}
+            </button>
+          ))}
         </div>
       )}
       <div
@@ -232,7 +255,9 @@ export const Input: React.FC<TextEditorProps> = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         onSelect={handleTextSelection}
-        className={`${editorClass || ''} editor`}
+        className={`${
+          editorClass || ''
+        } placeholderClass editor`}
         data-placeholder={
           placeholder || 'Start typing here...'
         }

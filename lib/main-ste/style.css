@@ -31,3 +31,17 @@
   color: white;
   cursor: pointer;
 }
+
+.placeholderClass{
+  color: #BFBFBF;
+  font-size: 16px;
+  font-style: italic;
+}
+
+code {
+  color: #E8912D;
+}
+
+.list{
+  line-height: 5px;
+}

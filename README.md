@@ -1,4 +1,4 @@
-# MigSTE  [![npm downloads](https://img.shields.io/npm/d18m/mig-ste.svg?maxAge=2592000)](http://www.npmtrends.com/mig-ste) [![npm](https://img.shields.io/npm/v/mig-ste.svg)](https://www.npmjs.com/package/mig-ste)
+# MigSTE  [![npm downloads](https://img.shields.io/npm/d18m/mig-ste.svg?maxAge=5592000)](http://www.npmtrends.com/mig-ste) [![npm](https://img.shields.io/npm/v/mig-ste.svg)](https://www.npmjs.com/package/mig-ste)
 
 A Rich Text Editor Component for React
 
@@ -22,18 +22,44 @@ function MyComponent() {
     console.log(content)
   }
 
+  const formats = ['bold', 'italic', 'link']
+
   return (
     <>
-      <Input placeholder="typing..." activeColor="#028ECA" editorClass='test' ref={inputRef} handleContentChange={inputData} />
+      <Input
+        formats={formats}
+        placeholder="typing..."
+        activeColor="#028ECA"
+        editorClass='editor'
+        ref={inputRef}
+        handleContentChange={inputData} 
+      />
     </>
   );
 }
 
 ```
 
-## Properties
+## Props
 
 The MigSTE accepts properties that aids you customize the text editor to your taste.
+
+### formats
+An array of style formats needed
+
+#### Available formats
+* bold
+* italic
+* underline
+* strikethrough
+* link
+* code
+* list
+
+#### sample usage
+```js
+const formats = ['bold', 'italic', 'link']
+```
 
 ### handleContentChange
 A function that return your editor content in real time (works like `useState`)
@@ -93,6 +119,7 @@ A string class to be applied to the button container
 
 ### buttonsClass
 A string class to be applied to the style buttons
+
 -----------
 
 ## Contributing
@@ -113,6 +140,13 @@ git commit -m "An Amazing feature"
 git push origin feature/AmazingFeature
 ```
 6. Open a Pull Request
+
+## Future Road Map and Things You can Contribute to
+
++ A more customizable editor
++ Markdown compatible
++ More style format inclusion
++ Bug fixes
 
 ## License
 Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
