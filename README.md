@@ -1,7 +1,7 @@
 # MigSTE  [![npm downloads](https://img.shields.io/npm/d18m/mig-ste.svg?maxAge=5592000)](http://www.npmtrends.com/mig-ste) [![npm](https://img.shields.io/npm/v/mig-ste.svg)](https://www.npmjs.com/package/mig-ste)
 
 A Rich Text Editor Component for React
-> <i>stable version starts at v1.03</i>
+> <i>stable version starts at v1.0.3</i>
 
 ## Quick Start
 

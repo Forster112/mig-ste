@@ -1,6 +1,6 @@
 {
   "name": "mig-ste",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A react component rich text editor",
   "type": "module",
   "main": "dist/index.cjs.js",
