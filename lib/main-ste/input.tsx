@@ -230,8 +230,12 @@ export const Input: React.FC<TextEditorProps> = ({
         >
           {chosenFormats.map((style) => (
             <button
+              type="button"
               key={style.tag}
-              onClick={() => toggleStyle(style.tag)}
+              onClick={(e) => {
+                e.preventDefault();
+                toggleStyle(style.tag);
+              }}
               className={`${buttonsClass || ''} buttons`}
               style={{
                 backgroundColor: activeStyles.includes(

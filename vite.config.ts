@@ -17,6 +17,13 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
         },
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.name || '';
+          if (name === 'style.css' || name === 'index.css') {
+            return 'index.css';
+          }
+          return name;
+        },
       },
       external: [...Object.keys(peerDependencies)],
     },

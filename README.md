@@ -1,6 +1,7 @@
 # MigSTE  [![npm downloads](https://img.shields.io/npm/d18m/mig-ste.svg?maxAge=5592000)](http://www.npmtrends.com/mig-ste) [![npm](https://img.shields.io/npm/v/mig-ste.svg)](https://www.npmjs.com/package/mig-ste)
 
 A Rich Text Editor Component for React
+> <i>stable version starts at v1.03</i>
 
 ## Quick Start
 
@@ -13,7 +14,7 @@ npm install mig-ste
 ```jsx
 import React, {useRef} from 'react'
 import { Input } from 'mig-ste'
-import './style.css'
+import 'mig-ste/dist/mig-ste.css';
 
 function MyComponent() {
   const inputRef = useRef(null)
@@ -68,6 +69,7 @@ A function that return your editor content in real time (works like `useState`)
 ``` jsx
 import React from 'react'
 import { Input } from 'mig-ste'
+import 'mig-ste/dist/mig-ste.css';
 
 function MyComponent() {
 
@@ -90,6 +92,7 @@ Allows you to pass a `ref` down to the editor
 ```jsx
 import React, {useRef} from 'react'
 import { Input } from 'mig-ste'
+import 'mig-ste/dist/mig-ste.css';
 
 function MyComponent() {
   const inputRef = useRef(null)
